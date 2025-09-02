@@ -210,19 +210,39 @@ function FirstNPrimes(start, range) {
 console.log(FirstNPrimes(500, 20));
 
 //Coding challenge #20: Rotate an array to the left 1 position
-let array20 = [1, 2, 3, 4];
+let array20 = [1, 2, 3, 4, 5, 6, 7, 8];
 
 function rotateLeft(array) {
     let temp = array[0];
-    let i = array.length - 1;
-    console.log(i);
+    let len = array.length - 1;
 
-    for (i; i > 0; i--) {
-        console.log(i);
-        array[i - 1] = array[i];
+
+    for (let i = 0; i < len; i++) {
+        console.log(`in loop i=${i}`);
+
+        array[i] = array[i + 1];
+
 
     }
-    array[array.length - 1] = temp;
+    array[len] = temp;
     return array;
 }
 console.log(rotateLeft(array20));
+
+
+//Coding challenge #21: Rotate an array to the right 1 position
+function rotateRight(array) {
+    let len = array.length - 1;
+    let temp = array[array.length - 1];
+
+    for (let i = 0; i < len - 1; i++) {
+        console.log(`index ${i}`);
+
+        array[i - 1] = array[i - 2];
+
+
+    }
+    array[0] = temp;
+    return array;
+}
+console.log(rotateRight(array20));
