@@ -231,18 +231,148 @@ console.log(rotateLeft(array20));
 
 
 //Coding challenge #21: Rotate an array to the right 1 position
+let array21 = [1, 2, 3, 4, 5, 6, 7, 8];
 function rotateRight(array) {
-    let len = array.length - 1;
+    let maxIndex = array.length - 1;
+
     let temp = array[array.length - 1];
 
-    for (let i = 0; i < len - 1; i++) {
+    console.log(temp);
+
+    for (let i = 0; i < maxIndex; i++) {
         console.log(`index ${i}`);
 
-        array[i - 1] = array[i - 2];
+        console.log(`${maxIndex - i - 1}-> ${maxIndex - i}`);
+        array[maxIndex - i] = array[maxIndex - i - 1];
 
 
     }
     array[0] = temp;
     return array;
 }
-console.log(rotateRight(array20));
+console.log(rotateRight(array21));
+
+//Coding challenge #22: Reverse an array
+let reversed = array21.slice().reverse();
+console.log(reversed);
+
+//Coding challenge #23: Reverse a string
+let myString = "Hello World";
+
+let reversedString = myString.split('').reverse('').join('');
+console.log(reversedString);
+
+//Coding challenge #24: Create a function that will merge two arrays and return the result as a new array
+
+function mergeArrays(array1, array2) {//non-destructive
+    return array1.concat(array2);
+}
+
+console.log(mergeArrays(array20, array21));
+
+//Coding challenge #25: Create a function that will receive two arrays of numbers as arguments and return an array
+//composed of all the numbers that are either in the first array or second array but not in both
+
+function mergeUniqueArrays(array1, array2) {
+    let mergedArray = [...array1, ...array2];//merge 2 arrays
+    let uniqueNumbersSet = new Set(mergedArray);//create a set, which removes duplicates
+    let uniqueNumbersArray = [...uniqueNumbersSet];//convert set back to an array
+    return uniqueNumbersArray;
+
+}
+
+console.log(mergeUniqueArrays(array20, array21));
+
+//Coding challenge #26: Create a function that will receive two arrays and will return an array with elements that are in
+//the first array but not in the second
+let array261 = [1, 2, 3, 4, 6, 6, 5, 9, 9];
+let array262 = [1, 2, 7, 8];
+
+function excludeArray2(array1, array2) {
+    let newArray = [];
+    let j = 0;
+
+    for (let i = 0; i < array1.length; i++) {
+        if (!array2.includes(array1[i])) { newArray[j++] = array1[i]; }
+
+
+    }
+    return newArray;
+}
+console.log(excludeArray2(array261, array262));
+
+//more idiomatic
+
+function excludeArray2b(array1, array2) {
+    return array1.filter(element => !array2.includes(element)); //don't forget return!
+}
+
+console.log(excludeArray2b(array261, array262));
+
+//Coding challenge #27: Create a function that will receive an array of numbers as argument and will return a new array
+//with distinct elements
+
+function getDistinct(array) {
+    let uniqueNumbersSet = new Set(array);//create a set, which removes duplicates
+    return [...uniqueNumbersSet];//convert set back to an array
+
+}
+
+console.log(getDistinct(array261));
+
+//Coding challenge #28: Calculate the sum of first 100 prime numbers
+
+function sumFirst100Primes() {
+    let count = 0;
+    let i = 2;
+    let primes = [];
+
+
+    while (count < 100) {
+        if (isPrime(i) === true) {
+            primes[count++] = i;
+
+        }
+        i++;
+    }
+
+    let sumOfPrimes = primes.reduce((accumulator, element) => accumulator + element, 0);
+
+    return { sumOfPrimes, primes };
+
+
+}
+const { sumOfPrimes } = sumFirst100Primes();
+
+console.log(sumOfPrimes);
+
+//Coding challenge #29: Print the distance between the first 100 prime numbers
+
+const { primes } = sumFirst100Primes();//array of first 100 primes
+
+function distanceBetweenNumbers(array) {
+    let distances = [];
+    for (let i = 0; i < array.length - 1; i++) {
+        distances[i] = array[i + 1] - array[i];
+    }
+    return distances;
+
+}
+
+console.log(distanceBetweenNumbers(primes));
+
+//Coding challenge #30-a: Create a function that will add two positive numbers of indefinite size. The numbers are
+//received as strings and the result should be also provided as string.
+//I'm assuming the numbers are integers
+
+function addStringNumbers(string1, string2) {
+    let a1 = [...string1];
+    let ArrNum1 = a1.map(Number);
+
+    let a2 = [...string2];
+    let ArrNum2 = a2.map(Number);
+
+
+}
+
+console.log(addStringNumbers('100', '1500'));

@@ -58,8 +58,7 @@ the first array but not in the second
 Coding challenge #27: Create a function that will receive an array of numbers as argument and will return a new array
 with distinct elements
 
-Coding challenge #27: Create a function that will receive an array of numbers as argument and will return a new array
-with distinct elements
+
 
 Coding challenge #28: Calculate the sum of first 100 prime numbers
 
