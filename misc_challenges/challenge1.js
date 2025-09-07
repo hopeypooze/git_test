@@ -366,13 +366,256 @@ console.log(distanceBetweenNumbers(primes));
 //I'm assuming the numbers are integers
 
 function addStringNumbers(string1, string2) {
-    let a1 = [...string1];
-    let ArrNum1 = a1.map(Number);
+    let a1=[];
+    let a2=[];
+    let arrNum1=[];
+    let arrNum2=[];
+    let arrResult=[];//to hold the sum
+    let arrResultIndex=0;
+    let carry=0; //to hold the carry digit
+    let i; //to carry on after the loop ends
+    //if one string is longer, make that into arrNum1
+if((string1.length === string2.length) || (string1.length > string2.length))//if same length, just assign strings to arrays same is string 1 is longer
+{a1 = [...string1];
+     arrNum1 = a1.map(Number);
 
-    let a2 = [...string2];
-    let ArrNum2 = a2.map(Number);
+     a2 = [...string2];
+    arrNum2 = a2.map(Number);}
+else 
+   { a1 = [...string2];
+    arrNum1 = a1.map(Number);
 
+    a2 = [...string1];
+     arrNum2 = a2.map(Number);}
+
+
+
+//loop through digits of shorter array
+for(i=0; i< arrNum2.length; i++)
+//each loop add digits together
+    {result= (arrNum2[arrNum2.length-1-i]) + (arrNum1[arrNum1.length-1-i]); 
+
+        if (carry > 0)//if there's anything in carry
+        {result += carry;
+            carry =0;}
+        if(result < 10)//if sum is <10, put the digit in arrResult
+            {arrResult[arrResultIndex]= result;
+                arrResultIndex ++;
+            }
+        else { //if the sum is > 10 log 0 to arrResult and assign the value of the tens to carry
+
+                // arrResult[arrResultIndex]= 0;
+                arrResult[arrResultIndex]= result % 10;
+                arrResultIndex ++;
+                carry = Math.floor(result/10);
+        }
+    }
+
+for(i; i< arrNum1.length; i++)
+{arrResult[arrResultIndex]= arrNum1[arrNum1.length-1-i]+carry;//carry can be added one last time, it may be 0
+                arrResultIndex ++;
+                carry=0;// so it doesn't get added again
+            }
+
+
+
+if (carry > 0) {
+    arrResult.push(carry);
+}
+
+
+
+//reverse the digits 
+
+let final=arrResult.slice().reverse();
+return final.join("");
 
 }
 
-console.log(addStringNumbers('100', '1500'));
+console.log(addStringNumbers('999', '1'));
+
+//better version using push and simplified
+
+function addStringNumbers2(string1, string2) {
+    // Ensure string1 is the longer one
+    if (string2.length > string1.length) {
+        [string1, string2] = [string2, string1];
+    }
+
+    const arrNum1 = [...string1].map(Number);
+    const arrNum2 = [...string2].map(Number);
+    const arrResult = [];
+
+    let carry = 0;
+    let i = 0;
+
+    // Add digits from the end
+    for (i = 0; i < arrNum2.length; i++) {
+        const sum = arrNum1[arrNum1.length - 1 - i] + arrNum2[arrNum2.length - 1 - i] + carry;
+        arrResult.push(sum % 10);
+        carry = Math.floor(sum / 10);
+    }
+
+    // Add remaining digits from the longer number
+    for (; i < arrNum1.length; i++) {
+        const sum = arrNum1[arrNum1.length - 1 - i] + carry;
+        arrResult.push(sum % 10);
+        carry = Math.floor(sum / 10);
+    }
+
+    // Final carry
+    if (carry > 0) {
+        arrResult.push(carry);
+    }
+
+    return arrResult.reverse().join('');
+}
+
+console.log(addStringNumbers2('1', '999')); // Expected: '12690'
+
+//Coding challenge #31a. Create a function that will return the number of words in a text
+function countWords(string){
+    const words = string.split(" ");
+    return words.length-1;
+}
+
+//better
+
+function countWords(text) {
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+}
+
+
+
+console.log(countWords("This is my text, it's a string of words and punctuation.  Let's see what happens when I try to analyse it for wordcount."));
+
+//Coding challenge #32. Create a function that will capitalize the first letter of each word in a text
+const testString= "This is my text, it's a string of words and punctuation.  Let's  see what happens    when I try to analyse it for wordcount.";
+
+
+function capitalizeWords(text) {
+    return text
+        .trim()
+        .split(/\s+/)
+        .map(word => word[0].toUpperCase() + word.slice(1))//returns a new array
+        .join(" ");
+}
+
+
+console.log(capitalizeWords(testString));
+
+//Coding challenge #33. Calculate the sum of numbers received in a comma delimited string
+
+const stringNumbers="1, 2, 3, 4, 5, 6";
+
+function sumString(string) {
+return string.split(',').map(Number).reduce((accumulator, element)=> accumulator + element,0);
+}
+
+console.log(sumString(stringNumbers));
+
+// //Coding challenge #35. Create a function to convert a CSV text to a “bi-dimensional” array
+// *****//TURN THIS INTO A FUNCTION- pass in each row
+// let my2DArray=[];
+// let i=0; 
+// let j=0;
+
+// const fs = require('fs');
+// const csv = require('csv-parser');
+
+// const filePath = 'data.csv'; // Replace with your CSV file path
+
+// fs.createReadStream(filePath)
+//     .pipe(csv())
+//     .on('data', (row) => {
+
+//         my2DArray[i] = []; // Initialize the inner array
+//         j = 0; // Reset j for each row
+//         // Each 'row' is an object where keys are column headers
+//          for(let prop in row){
+//             my2DArray[i][j++]=row[prop];
+//         console.log(row[prop]);}
+//         i++;
+
+//         // console.log(row);
+        
+//     })
+//     .on('end', () => {
+//         console.log('CSV file successfully processed.');
+//         console.log(i);
+//     })
+//     .on('error', (error) => {
+//         console.error('Error processing CSV:', error.message);
+//     });
+
+// console.log(`my2darray: ${my2DArray}`);
+
+// console.log('\n');
+
+
+    //Coding challenge #39. Implement the Caesar cypher//chosen to leave digits and non-alpha chars alone.  Retaining caps.
+
+const plaintext ="This is my  112secret! messagez.";
+const shift =3;
+
+function isCharUpper(char) {
+   return char === char.toUpperCase() && char !== char.toLowerCase();
+}
+
+function caesar(string, number){
+    let chCyph;
+    const isAlphaChar = (char) => /^[a-zA-Z]$/.test(char);
+    let arrEncrypted=[];
+for (let i=0; i<string.length; i++)
+    {
+    let ch=Math.floor(string.charCodeAt(i));
+
+    let a = isCharUpper(string[i]) ? Math.floor('A'.charCodeAt(0)): Math.floor('a'.charCodeAt(0));
+
+    // console.log(isAlphaChar(string[i]));
+    if(isAlphaChar(string[i]))
+        {chCyph= ((ch - a) + number)% 26 + a;}
+    else {chCyph= ch;}
+
+    // console.log(`ch: ${string[i]} ${ch} A: ${a} number: ${number} ch - a= ${(ch - a)} mod: ${((ch - a) + number)% 26} final: ${((ch - a) + number)% 26 + a} chCyph: ${chCyph}`);
+
+    arrEncrypted.push(chCyph);
+    }
+let encryptedChars=arrEncrypted.map(num=>String.fromCharCode(num));
+// console.log(encryptedChars);
+
+return encryptedChars.join('');}
+
+console.log(caesar(plaintext,shift));
+
+
+//Coding challenge #40. Implement the bubble sort algorithm for an array of numbers
+unsorted =[-10,-1,-200,5,3,7,8,6];
+
+function bubble_sort(array)
+{
+for(let i=0; i < array.length; i++)
+    {
+        
+       for (let j=0; j < array.length-1-i; j++)
+       {
+        if (array[j] > array[j+1])
+            {let temp=array[j];
+            array[j] = array[j+1];
+            array[j+1] = temp;
+
+            // for (let k=0; k<array.length; k++)
+            // {console.log(array[k]);
+            // }  
+        
+        }
+
+        }
+    }
+    return array;
+}
+
+console.log(bubble_sort(unsorted));
+
+//Coding challenge #41. Create a function to calculate the distance 
+// between two points defined by their x, y coordinates
