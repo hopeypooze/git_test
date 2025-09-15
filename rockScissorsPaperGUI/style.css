@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "consolas", sans-serif;
+  color: #eee;
+  background-color: #222;
+  /* background-color: #60b347; */
+}
+
+header {
+  position: relative;
+  /* height: 35vh; */
+  border-bottom: 7px solid #eee;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.altmain {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.btn {
+  border: none;
+  background-color: #eee;
+  color: #222;
+  font-size: 2rem;
+  font-family: inherit;
+  padding: 2rem 3rem;
+  cursor: pointer;
+}
+
+.message {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8rem;
+}
+
+.scoreboard {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 8rem;
+}
+.leftscore {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.humanheader {
+  display: flex;
+}
+.humanscore {
+  display: flex;
+}
+
+.rightscore {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
+
+.computerheader {
+  display: flex;
+}
+.computerscore {
+  display: flex;
+}
+.hidden {
+  display: none;
+}

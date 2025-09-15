@@ -1,0 +1,23 @@
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* this selector selects all divs inside of .flex-container */
+.flex-container div {
+    background: peachpuff;
+    border: 4px solid brown;
+    height: 100px;
+    width: 250px;
+    flex: 1 1 auto;
+
+    /*can't use flex:1 with columns*/
+}
+
+/* only div.two is selected here */
+.flex-container .two {
+    /* flex: 2 1 0%; */
+    /*grow|shrink|basis */
+    height: 80px;
+    flex-shrink: 0;
+}
