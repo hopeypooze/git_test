@@ -1,85 +1,92 @@
 body {
-    background: #eee;
-    font-family: sans-serif;
-
+  background: #eee;
+  font-family: sans-serif;
 }
-
-
 
 button {
-    background: white;
-    border: 1px solid #eee;
-    display: block;
-    margin: 0 auto;
-    padding: 8px 24px;}
+  background: white;
+  border: 1px solid #eee;
+  display: block;
+  margin: 0 auto;
+  padding: 8px 24px;
+}
 
 .calculator-body {
-background: white;
-border: 1px solid #eee;
-display: flex;
-width: 500px;
-align-content: space-around;
-flex-direction: column;
-justify-content: center;
-margin: 0 auto;
-padding: 10;
+  background: white;
+  border: 1px solid #eee;
+  display: flex;
+  width: 500px;
+  align-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10;
 }
 
-.calc-top{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    border: 1px solid black;
-
+.calc-top {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid black;
 }
 
-.calc-bottom{
-    display: flex;
-   
-     border: 1px solid black;
-    
+.calc-bottom {
+  display: flex;
+
+  border: 1px solid black;
 }
 
-.digit-area{display: flex; /* Makes the container a flex container */
-    flex-wrap: wrap; /* Allows buttons to wrap to the next line if space is limited */
-    justify-content: space-around; /* Distributes space evenly around items on the main axis (horizontal) */
-    align-items: center; /* Centers items vertically on the cross axis */
-    gap: 10px; /* Adds space between grid items */
-    padding: 20px;
-    border: 1px solid #ccc;
-    max-width: 600px;
-    margin: 0 auto; /* Centers the container itself */
+.digit-area {
+  display: flex; /* Makes the container a flex container */
+  flex-wrap: wrap; /* Allows buttons to wrap to the next line if space is limited */
+  justify-content: space-around; /* Distributes space evenly around items on the main axis (horizontal) */
+  align-items: center; /* Centers items vertically on the cross axis */
+  gap: 10px; /* Adds space between grid items */
+  padding: 20px;
+  border: 1px solid #ccc;
+  max-width: 600px;
+  margin: 0 auto; /* Centers the container itself */
 }
 
-.operators-area{display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-align-items: flex-start;
-width:30%;
-border: 1px solid black;
+.operators-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 30%;
+  border: 1px solid black;
 }
-
 
 .digit {
-   
-    flex: 1 1 calc(33% - 20px); /* Allows buttons to grow/shrink and sets a base width for a 3-column layout (accounting for gap) */
-    padding: 15px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    box-sizing: border-box; 
+  flex: 1 1 calc(33% - 20px); /* Allows buttons to grow/shrink and sets a base width for a 3-column layout (accounting for gap) */
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .digit:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .operator:hover {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
-.operator{}
+.display {
+  width: 200px;
+  height: 60px;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 2rem;
+  text-align: right;
+  padding: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
