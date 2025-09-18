@@ -1,3 +1,4 @@
+
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
 
@@ -24,6 +25,18 @@ function add(n1, n2) {
 
 function subtract(n1, n2) {
   sum = n1 - n2;
+  console.log('subtract()', n1, n1, sum);
+  return sum;
+ 
+}
+
+function multiply(n1, n2) {
+  sum = n1 * n2;
+  return sum;
+}
+
+function divide(n1, n2){
+  sum= n1 / n2;
   return sum;
 }
 
@@ -38,6 +51,7 @@ function doOperation(operand1, savedOperator, operand2) {
       sum = add(operand1, operand2);
 
       break;
+
     case "-":
       sum = subtract(operand1, operand2);
 
@@ -47,16 +61,33 @@ function doOperation(operand1, savedOperator, operand2) {
       display.textContent = sum;
       break;
     case "*":
-      console.log(`You clicked: ${operator.textContent}`);
+      sum = multiply(operand1, operand2);
+
+      operand1 = sum;
+      operand2 = null;
+
+      display.textContent = sum;
       break;
     case "/":
-      console.log(`You clicked: ${operator.textContent}`);
+       sum = divide(operand1, operand2);
+
+      operand1 = sum;
+      operand2 = null;
+
+      display.textContent = sum;
       break;
     case "=":
-      console.log(`You clicked: ${operator.textContent}`);
+      display.textContent = sum;
       break;
     case "CE":
-      console.log(`You clicked: ${operator.textContent}`);
+      sum=0;
+      displayString="";
+      display.textContent=sum;
+      operand1 = null;
+      operand2 = null;
+      tempDigits = "";
+      currentOperator="";
+      savedOperator = "";
       break;
 
     default:
@@ -67,7 +98,7 @@ function doOperation(operand1, savedOperator, operand2) {
 digits.forEach((digit) => {
   digit.addEventListener("click", () => {
     currentDigit = Number(digit.textContent);
-    console.log("you clicked", currentDigit);
+    console.log("foreach digit you clicked", currentDigit);
     display.textContent = displayText(currentDigit);
     tempDigits += String(currentDigit);
   });
@@ -75,9 +106,12 @@ digits.forEach((digit) => {
 
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    currentOperator = operator.textContent;
 
-    console.log("you clicked", currentOperator);
+  
+    currentOperator = operator.textContent;
+  if (currentOperator != 'CE'){
+        console.log("NOT CE");
+   
 
     if (operand1 == null) {
       operand1 = Number(tempDigits);
@@ -91,14 +125,7 @@ operators.forEach((operator) => {
       console.log(operand1);
       console.log(operand2);
     }
-    if (currentOperator != "") {
-      savedOperator = currentOperator;
-      displayText(savedOperator);
-      display.textContent = displayString;
-      console.log(
-        `op1 ${operand1} op2 ${operand2} displaytext: ${displayString} currentop: ${currentOperator} savedop: ${savedOperator}` //why is displaySTring correct here but not in the actual display?
-      );
-    }
+   
     if (operand1 != null && operand2 != null) {
       sum = doOperation(operand1, savedOperator, operand2);
       displayString = sum;
@@ -106,11 +133,58 @@ operators.forEach((operator) => {
 
       operand1 = sum;
       operand2 = null;
+      tempDigits = "";
 
       savedOperator = "";
       console.log(
         `op1 ${operand1} op2 ${operand2} displaytext: ${displayString} currentop: ${currentOperator} savedop: ${savedOperator}`
       );
     }
-  });
+
+     if (currentOperator != "" && currentOperator != 'CE') {
+      savedOperator = currentOperator;
+      if(savedOperator != '=' && savedOperator !='CE')
+     { display.textContent = displayText(savedOperator);
+      console.log(
+        `op1 ${operand1} op2 ${operand2} displaytext: ${displayString} currentop: ${currentOperator} savedop: ${savedOperator}` //why is displaySTring correct here but not in the actual display?
+      );}
+    }
+  }//if it's CE
+else {
+  console.log("CE");
+  
+  
+  sum=0;
+      displayString="";
+      display.textContent=sum;
+      operand1 = null;
+      operand2 = null;
+      tempDigits = "";
+      currentOperator="";
+      savedOperator = "";}
+
+
+
+
+
+});
+});
+
+document.addEventListener("keydown", (event) => {
+  let key = event.key;
+
+  // Normalize Enter and Backspace
+  if (key === "Enter") key = "=";
+  if (key === "Backspace") key = "CE";
+
+  const validKeys = ["0","1","2","3","4","5","6","7","8","9","+","-","*","/","=","CE"];
+
+  if (validKeys.includes(key)) {
+    const matchingButton = Array.from(document.querySelectorAll(".digit, .operator"))
+      .find(btn => btn.textContent === key);
+
+    if (matchingButton) {
+      matchingButton.click(); // Simulate the button click
+    }
+  }
 });
