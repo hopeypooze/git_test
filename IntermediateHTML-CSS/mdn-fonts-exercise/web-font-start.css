@@ -1,0 +1,64 @@
+/* General setup */
+/* @font-face {
+  font-family: "FreeMono";
+  src: url("FreeMonoBoldOblique.woff2") format("woff2"),
+    url("FreeMonoBoldOblique.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Freebooter Script";
+  src: url("fonts/FreebooterScript.woff2") format("woff2"),
+    url("fonts/FreebooterScript.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Freebooter Script - Alts";
+  src: url("fonts/FreebooterScript-Alts.woff2") format("woff2"),
+    url("fonts/FreebooterScript-Alts.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} */
+
+.roboto-uniquifier {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+html {
+  font-size: 10px;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+body {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Typography */
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+p {
+  font-family: "Roboto";
+  font-size: 2.4rem;
+  line-height: 1.6;
+  word-spacing: 0.6rem;
+}

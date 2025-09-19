@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'FreeMono';
+    src: url('FreeMonoBoldOblique.woff2') format('woff2'),
+        url('FreeMonoBoldOblique.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Freebooter Script';
+    src: url('FreebooterScript.woff2') format('woff2'),
+        url('FreebooterScript.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Freebooter Script - Alts';
+    src: url('FreebooterScript-Alts.woff2') format('woff2'),
+        url('FreebooterScript-Alts.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
