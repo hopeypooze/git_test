@@ -1,0 +1,138 @@
+/* This is a CSS comment */
+
+@font-face {
+  font-family: "Norse-Bold"; /* Choose a name for your font */
+  src: url("Norse-Bold.otf") format("opentype"); /* Specify the path to your .otf file and its format */
+  font-weight: normal; /* Optional: Define font weight if needed */
+  font-style: normal; /* Optional: Define font style if needed */
+}
+
+/* Styling for the body element */
+body {
+    display:flex;
+  font-family: Arial, sans-serif; /* Sets the default font */
+  background-color: #f4f4f4; /* Sets a light grey background color */
+  margin: 0; /* Removes default body margin */
+  padding: 20px; /* Adds padding around the content */
+}
+
+/* Styling for all h1 headings */
+h1 {
+    font-family: "Norse-Bold";
+  color: #333; /* Sets the text color to dark grey */
+  text-align: center; /* Centers the heading text */
+  margin-bottom: 20px; /* Adds space below the heading */
+}
+
+#odin{ max-width: 100px;
+  max-height: 100px;
+  height: auto; /* Ensures the aspect ratio is maintained */
+  width: auto; /* Ensures the aspect ratio is maintained */}
+
+label {
+  font-size: 0.6em; /* Adjust as needed for desired small size */
+  text-transform: uppercase;
+  padding-top: 10px;
+}
+
+input {
+  padding-bottom: 10px; /* Adds 10 pixels of padding below the input content */
+}
+
+input:focus {
+  outline: none; /* Removes the default browser outline */
+  border: 2px solid blue; /* Adds a red border on focus */
+}
+
+.top{display:flex; padding:20px;}
+
+/* Style for the password input field when it is focused (clicked) */
+input[type="password"]:focus {
+  border-color: #ff001e; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: add a subtle glow */
+}
+input[type="password2"]:focus {
+  border-color: #ff001e; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: add a subtle glow */
+}
+/* Styling for elements with the class "container" */
+.containerleft{
+    display:flex;
+
+  width: 40%; /* Sets the width of the container */
+  height: 100vh;
+  margin: 0 auto; /* Centers the container horizontally */
+   background-image: url("halie-west-25xggax4bSA-unsplash.jpg");
+      background-size: cover; /* or contain, or specific dimensions */
+      background-repeat: no-repeat;
+      background-position: center;
+
+}
+
+.leftheader{display:flex;
+     margin-top: calc(100vh / 3);
+     height:100px;
+     width:100%;
+     align-items:center;
+     justify-content: center;
+       font-family: "Norse-Bold";
+       font-size: 4rem;
+       background-color: rgba(0, 0, 0, 0.5);
+  color: white; /* Sets the text color to dark grey */
+  text-align: center; /* Centers the heading text */
+  margin-bottom: 20px; /* Adds space below the heading */
+    
+    }
+
+.containerright{
+    display:flex;
+    flex-direction: column;
+  width: 60%; /* Sets the width of the container */
+  margin: 0 auto; /* Centers the container horizontally */
+  background-color: #f4f4f4; /* Sets a white background for the container */
+  padding: 30px; /* Adds padding inside the container */
+  border-radius: 8px; /* Rounds the corners of the container */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+.midhead{display:flex;}
+
+.middle{display:flex;
+    flex-direction: column;
+   }
+
+.formcontainer{display:flex;}
+
+.form-fields-left{display:flex;
+    flex-direction: column;
+width:50%;
+padding: 10px;
+align-items: flex-start;}
+
+.form-fields-right{display:flex;
+flex-direction: column;
+width:50%;
+padding:10px;
+align-items: flex-start;
+}
+
+
+
+.bottom{display:flex;
+flex-direction: column;
+padding:20px;
+}
+
+.submit{
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; 
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 16px; /* Text size */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline for button text */
+  display: inline-block; /* Allow padding and margin to work correctly */
+}
