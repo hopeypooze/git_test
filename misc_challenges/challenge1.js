@@ -1,72 +1,72 @@
 //Coding challenge #1: Print numbers from 1 to 10
 
-for (let i = 1; i <= 10; i++)
-    console.log(i);
+for (let i = 1; i <= 10; i++) console.log(i);
 
 //Coding challenge #2: Print the odd numbers less than 100
 for (let i = 0; i < 100; i++) {
-    if (i % 2 != 0) {
-        console.log(i);
-    }
+  if (i % 2 != 0) {
+    console.log(i);
+  }
 }
 
 //Coding challenge #3: Print the multiplication table with 7
 
-for (let i = 0; i <= 12; i++)
-    console.log(`${i}x 7 = ${i * 7}`);
+for (let i = 0; i <= 12; i++) console.log(`${i}x 7 = ${i * 7}`);
 
 //Coding challenge #4: Print all the multiplication tables with numbers from 1 to 10
 
 for (let j = 0; j <= 12; j++) {
-    for (let i = 0; i <= 12; i++) { console.log(`${i}x ${j} = ${i * j}`); }
+  for (let i = 0; i <= 12; i++) {
+    console.log(`${i}x ${j} = ${i * j}`);
+  }
 }
 
 //Coding challenge #5: Calculate the sum of numbers from 1 to 10
 let sum = 0;
-for (let i = 1; i < 11; i++) { sum = i + sum; }
+for (let i = 1; i < 11; i++) {
+  sum = i + sum;
+}
 console.log(sum);
 
 //Coding challenge #6: Calculate 10!
 function factorial(f) {
-
-    if (f === 0) {
-        return 1;
-    }
-    else {
-        return f * factorial(f - 1);
-    }
-
+  if (f === 0) {
+    return 1;
+  } else {
+    return f * factorial(f - 1);
+  }
 }
 console.log(factorial(10));
 
 function factorialIterative(n) {
-    let f = 1;
+  let f = 1;
 
-    for (let i = 2; i <= n; i++) {
-        f *= i;
-    }
+  for (let i = 2; i <= n; i++) {
+    f *= i;
+  }
 
-    return f;
+  return f;
 }
 console.log(factorialIterative(10));
 
 //Coding challenge #7: Calculate the sum of odd numbers greater than 10 and less than 30
 function sum1030() {
-    let sum = 0;
-    for (let i = 11; i < 30; i++)
-        if (i % 2 != 0) {
-
-            { sum = sum + i; }
-        }
-    return sum;
+  let sum = 0;
+  for (let i = 11; i < 30; i++)
+    if (i % 2 != 0) {
+      {
+        sum = sum + i;
+      }
+    }
+  return sum;
 }
 
 console.log(sum1030());
 
 //Coding challenge #8: Create a function that will convert from Celsius to Fahrenheit
 function convertTemp(degreesC) {
-    let fahrenheit = (degreesC * 1.8) + 32;
-    return fahrenheit;
+  let fahrenheit = degreesC * 1.8 + 32;
+  return fahrenheit;
 }
 
 console.log(convertTemp(0));
@@ -87,17 +87,16 @@ console.log(average);
 let arr12 = [1, 2, 3, 4, -5, -7, 9, 1];
 
 function positive(array) {
-    let posArr = array.filter(num => num > 0);
-    return posArr;
+  let posArr = array.filter((num) => num > 0);
+  return posArr;
 }
 
 console.log(positive(arr12));
 
 //Coding challenge #13: Find the maximum number in an array of numbers
 function findMax(array) {
-    let maxVal = Math.max(...arr12);
-    return maxVal;
-
+  let maxVal = Math.max(...arr12);
+  return maxVal;
 }
 console.log(findMax(arr12));
 
@@ -109,102 +108,97 @@ console.log(b);
 console.log(c);
 
 for (let i = 2; i < 10; i++) {
+  let a = b + c;
+  console.log(a);
 
-    let a = b + c;
-    console.log(a);
-
-    b = c;
-    c = a;
-
+  b = c;
+  c = a;
 }
 
 //Coding challenge #15: Create a function that will find the nth Fibonacci number using recursion
 
 function fibRecursive(n) {
-    if (n == 0) {
-        return 0;
-    } else if (n == 1) {
-        return 1;
-    } else {
-        return (fibRecursive(n - 1) + fibRecursive(n - 2));
-    }
+  if (n == 0) {
+    return 0;
+  } else if (n == 1) {
+    return 1;
+  } else {
+    return fibRecursive(n - 1) + fibRecursive(n - 2);
+  }
 }
 
 for (let i = 0; i < 10; i++) {
-    console.log(fibRecursive(i));
+  console.log(fibRecursive(i));
 }
 
 //Coding challenge #16: Create a function that will return a Boolean specifying if a number is prime
 
-
 function isFactor(n1, n2) {
-    if (n1 % n2 === 0) { return 0; } //it's a factor (not prime)
-    else { return 1; } //it's not a factor (could be prime)
-
+  if (n1 % n2 === 0) {
+    return 0;
+  } //it's a factor (not prime)
+  else {
+    return 1;
+  } //it's not a factor (could be prime)
 }
 
-
 function isPrime(n) {
-    for (let i = 2; i < Math.sqrt(n); i++) {
-        if (isFactor(n, i) === 0) {
-
-            return false;
-        }
-
+  for (let i = 2; i < Math.sqrt(n); i++) {
+    if (isFactor(n, i) === 0) {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
 console.log(isPrime(110));
 
-
 //Coding challenge #17: Calculate the sum of digits of a positive integer number
 
 function SumOfDigits(n) {
-    let sum = 0;
+  let sum = 0;
 
-    while (n > 0) {
-        sum += n % 10;
-        n = Math.floor(n / 10);
-
-    } return sum;
+  while (n > 0) {
+    sum += n % 10;
+    n = Math.floor(n / 10);
+  }
+  return sum;
 }
 
 console.log(SumOfDigits(12));
 
 //Coding challenge #18: Print the first 100 prime numbers
 function first100Prime() {
-    let count = 0;
-    let i = 2;
+  let count = 0;
+  let i = 2;
 
-    while (count < 100) {
-        if (isPrime(i) === true) {
-            console.log(`${count + 1}. ${i}`);
-            count++;
-        }
-        i++;
+  while (count < 100) {
+    if (isPrime(i) === true) {
+      console.log(`${count + 1}. ${i}`);
+      count++;
     }
-
+    i++;
+  }
 }
 
 first100Prime();
 
 //Coding challenge #19: Create a function that will return in an array the first "nPrimes" prime numbers greater than a
-//particular number 
+//particular number
 
 function FirstNPrimes(start, range) {
-    let count = 0;
-    let i = start;
-    let primeArray = [];
+  let count = 0;
+  let i = start;
+  let primeArray = [];
 
-    while (count < range) {
-        if (isPrime(i) === true) {
-            primeArray[count] = i;
-            count++;
-        }
-        i++;
+  while (count < range) {
+    if (isPrime(i) === true) {
+      primeArray[count] = i;
+      count++;
     }
-    return primeArray;
+    i++;
+  }
+  return primeArray;
 }
 
 console.log(FirstNPrimes(500, 20));
@@ -213,42 +207,36 @@ console.log(FirstNPrimes(500, 20));
 let array20 = [1, 2, 3, 4, 5, 6, 7, 8];
 
 function rotateLeft(array) {
-    let temp = array[0];
-    let len = array.length - 1;
+  let temp = array[0];
+  let len = array.length - 1;
 
+  for (let i = 0; i < len; i++) {
+    console.log(`in loop i=${i}`);
 
-    for (let i = 0; i < len; i++) {
-        console.log(`in loop i=${i}`);
-
-        array[i] = array[i + 1];
-
-
-    }
-    array[len] = temp;
-    return array;
+    array[i] = array[i + 1];
+  }
+  array[len] = temp;
+  return array;
 }
 console.log(rotateLeft(array20));
-
 
 //Coding challenge #21: Rotate an array to the right 1 position
 let array21 = [1, 2, 3, 4, 5, 6, 7, 8];
 function rotateRight(array) {
-    let maxIndex = array.length - 1;
+  let maxIndex = array.length - 1;
 
-    let temp = array[array.length - 1];
+  let temp = array[array.length - 1];
 
-    console.log(temp);
+  console.log(temp);
 
-    for (let i = 0; i < maxIndex; i++) {
-        console.log(`index ${i}`);
+  for (let i = 0; i < maxIndex; i++) {
+    console.log(`index ${i}`);
 
-        console.log(`${maxIndex - i - 1}-> ${maxIndex - i}`);
-        array[maxIndex - i] = array[maxIndex - i - 1];
-
-
-    }
-    array[0] = temp;
-    return array;
+    console.log(`${maxIndex - i - 1}-> ${maxIndex - i}`);
+    array[maxIndex - i] = array[maxIndex - i - 1];
+  }
+  array[0] = temp;
+  return array;
 }
 console.log(rotateRight(array21));
 
@@ -259,13 +247,14 @@ console.log(reversed);
 //Coding challenge #23: Reverse a string
 let myString = "Hello World";
 
-let reversedString = myString.split('').reverse('').join('');
+let reversedString = myString.split("").reverse("").join("");
 console.log(reversedString);
 
 //Coding challenge #24: Create a function that will merge two arrays and return the result as a new array
 
-function mergeArrays(array1, array2) {//non-destructive
-    return array1.concat(array2);
+function mergeArrays(array1, array2) {
+  //non-destructive
+  return array1.concat(array2);
 }
 
 console.log(mergeArrays(array20, array21));
@@ -274,11 +263,10 @@ console.log(mergeArrays(array20, array21));
 //composed of all the numbers that are either in the first array or second array but not in both
 
 function mergeUniqueArrays(array1, array2) {
-    let mergedArray = [...array1, ...array2];//merge 2 arrays
-    let uniqueNumbersSet = new Set(mergedArray);//create a set, which removes duplicates
-    let uniqueNumbersArray = [...uniqueNumbersSet];//convert set back to an array
-    return uniqueNumbersArray;
-
+  let mergedArray = [...array1, ...array2]; //merge 2 arrays
+  let uniqueNumbersSet = new Set(mergedArray); //create a set, which removes duplicates
+  let uniqueNumbersArray = [...uniqueNumbersSet]; //convert set back to an array
+  return uniqueNumbersArray;
 }
 
 console.log(mergeUniqueArrays(array20, array21));
@@ -289,22 +277,22 @@ let array261 = [1, 2, 3, 4, 6, 6, 5, 9, 9];
 let array262 = [1, 2, 7, 8];
 
 function excludeArray2(array1, array2) {
-    let newArray = [];
-    let j = 0;
+  let newArray = [];
+  let j = 0;
 
-    for (let i = 0; i < array1.length; i++) {
-        if (!array2.includes(array1[i])) { newArray[j++] = array1[i]; }
-
-
+  for (let i = 0; i < array1.length; i++) {
+    if (!array2.includes(array1[i])) {
+      newArray[j++] = array1[i];
     }
-    return newArray;
+  }
+  return newArray;
 }
 console.log(excludeArray2(array261, array262));
 
 //more idiomatic
 
 function excludeArray2b(array1, array2) {
-    return array1.filter(element => !array2.includes(element)); //don't forget return!
+  return array1.filter((element) => !array2.includes(element)); //don't forget return!
 }
 
 console.log(excludeArray2b(array261, array262));
@@ -313,9 +301,8 @@ console.log(excludeArray2b(array261, array262));
 //with distinct elements
 
 function getDistinct(array) {
-    let uniqueNumbersSet = new Set(array);//create a set, which removes duplicates
-    return [...uniqueNumbersSet];//convert set back to an array
-
+  let uniqueNumbersSet = new Set(array); //create a set, which removes duplicates
+  return [...uniqueNumbersSet]; //convert set back to an array
 }
 
 console.log(getDistinct(array261));
@@ -323,24 +310,23 @@ console.log(getDistinct(array261));
 //Coding challenge #28: Calculate the sum of first 100 prime numbers
 
 function sumFirst100Primes() {
-    let count = 0;
-    let i = 2;
-    let primes = [];
+  let count = 0;
+  let i = 2;
+  let primes = [];
 
-
-    while (count < 100) {
-        if (isPrime(i) === true) {
-            primes[count++] = i;
-
-        }
-        i++;
+  while (count < 100) {
+    if (isPrime(i) === true) {
+      primes[count++] = i;
     }
+    i++;
+  }
 
-    let sumOfPrimes = primes.reduce((accumulator, element) => accumulator + element, 0);
+  let sumOfPrimes = primes.reduce(
+    (accumulator, element) => accumulator + element,
+    0
+  );
 
-    return { sumOfPrimes, primes };
-
-
+  return { sumOfPrimes, primes };
 }
 const { sumOfPrimes } = sumFirst100Primes();
 
@@ -348,15 +334,14 @@ console.log(sumOfPrimes);
 
 //Coding challenge #29: Print the distance between the first 100 prime numbers
 
-const { primes } = sumFirst100Primes();//array of first 100 primes
+const { primes } = sumFirst100Primes(); //array of first 100 primes
 
 function distanceBetweenNumbers(array) {
-    let distances = [];
-    for (let i = 0; i < array.length - 1; i++) {
-        distances[i] = array[i + 1] - array[i];
-    }
-    return distances;
-
+  let distances = [];
+  for (let i = 0; i < array.length - 1; i++) {
+    distances[i] = array[i + 1] - array[i];
+  }
+  return distances;
 }
 
 console.log(distanceBetweenNumbers(primes));
@@ -366,150 +351,159 @@ console.log(distanceBetweenNumbers(primes));
 //I'm assuming the numbers are integers
 
 function addStringNumbers(string1, string2) {
-    let a1=[];
-    let a2=[];
-    let arrNum1=[];
-    let arrNum2=[];
-    let arrResult=[];//to hold the sum
-    let arrResultIndex=0;
-    let carry=0; //to hold the carry digit
-    let i; //to carry on after the loop ends
-    //if one string is longer, make that into arrNum1
-if((string1.length === string2.length) || (string1.length > string2.length))//if same length, just assign strings to arrays same is string 1 is longer
-{a1 = [...string1];
-     arrNum1 = a1.map(Number);
+  let a1 = [];
+  let a2 = [];
+  let arrNum1 = [];
+  let arrNum2 = [];
+  let arrResult = []; //to hold the sum
+  let arrResultIndex = 0;
+  let carry = 0; //to hold the carry digit
+  let i; //to carry on after the loop ends
+  //if one string is longer, make that into arrNum1
+  if (string1.length === string2.length || string1.length > string2.length) {
+    //if same length, just assign strings to arrays same is string 1 is longer
+    a1 = [...string1];
+    arrNum1 = a1.map(Number);
 
-     a2 = [...string2];
-    arrNum2 = a2.map(Number);}
-else 
-   { a1 = [...string2];
+    a2 = [...string2];
+    arrNum2 = a2.map(Number);
+  } else {
+    a1 = [...string2];
     arrNum1 = a1.map(Number);
 
     a2 = [...string1];
-     arrNum2 = a2.map(Number);}
+    arrNum2 = a2.map(Number);
+  }
 
+  //loop through digits of shorter array
+  for (
+    i = 0;
+    i < arrNum2.length;
+    i++ //each loop add digits together
+  ) {
+    result = arrNum2[arrNum2.length - 1 - i] + arrNum1[arrNum1.length - 1 - i];
 
-
-//loop through digits of shorter array
-for(i=0; i< arrNum2.length; i++)
-//each loop add digits together
-    {result= (arrNum2[arrNum2.length-1-i]) + (arrNum1[arrNum1.length-1-i]); 
-
-        if (carry > 0)//if there's anything in carry
-        {result += carry;
-            carry =0;}
-        if(result < 10)//if sum is <10, put the digit in arrResult
-            {arrResult[arrResultIndex]= result;
-                arrResultIndex ++;
-            }
-        else { //if the sum is > 10 log 0 to arrResult and assign the value of the tens to carry
-
-                // arrResult[arrResultIndex]= 0;
-                arrResult[arrResultIndex]= result % 10;
-                arrResultIndex ++;
-                carry = Math.floor(result/10);
-        }
+    if (carry > 0) {
+      //if there's anything in carry
+      result += carry;
+      carry = 0;
     }
+    if (result < 10) {
+      //if sum is <10, put the digit in arrResult
+      arrResult[arrResultIndex] = result;
+      arrResultIndex++;
+    } else {
+      //if the sum is > 10 log 0 to arrResult and assign the value of the tens to carry
 
-for(i; i< arrNum1.length; i++)
-{arrResult[arrResultIndex]= arrNum1[arrNum1.length-1-i]+carry;//carry can be added one last time, it may be 0
-                arrResultIndex ++;
-                carry=0;// so it doesn't get added again
-            }
+      // arrResult[arrResultIndex]= 0;
+      arrResult[arrResultIndex] = result % 10;
+      arrResultIndex++;
+      carry = Math.floor(result / 10);
+    }
+  }
 
+  for (i; i < arrNum1.length; i++) {
+    arrResult[arrResultIndex] = arrNum1[arrNum1.length - 1 - i] + carry; //carry can be added one last time, it may be 0
+    arrResultIndex++;
+    carry = 0; // so it doesn't get added again
+  }
 
-
-if (carry > 0) {
+  if (carry > 0) {
     arrResult.push(carry);
+  }
+
+  //reverse the digits
+
+  let final = arrResult.slice().reverse();
+  return final.join("");
 }
 
-
-
-//reverse the digits 
-
-let final=arrResult.slice().reverse();
-return final.join("");
-
-}
-
-console.log(addStringNumbers('999', '1'));
+console.log(addStringNumbers("999", "1"));
 
 //better version using push and simplified
 
 function addStringNumbers2(string1, string2) {
-    // Ensure string1 is the longer one
-    if (string2.length > string1.length) {
-        [string1, string2] = [string2, string1];
-    }
+  // Ensure string1 is the longer one
+  if (string2.length > string1.length) {
+    [string1, string2] = [string2, string1];
+  }
 
-    const arrNum1 = [...string1].map(Number);
-    const arrNum2 = [...string2].map(Number);
-    const arrResult = [];
+  const arrNum1 = [...string1].map(Number);
+  const arrNum2 = [...string2].map(Number);
+  const arrResult = [];
 
-    let carry = 0;
-    let i = 0;
+  let carry = 0;
+  let i = 0;
 
-    // Add digits from the end
-    for (i = 0; i < arrNum2.length; i++) {
-        const sum = arrNum1[arrNum1.length - 1 - i] + arrNum2[arrNum2.length - 1 - i] + carry;
-        arrResult.push(sum % 10);
-        carry = Math.floor(sum / 10);
-    }
+  // Add digits from the end
+  for (i = 0; i < arrNum2.length; i++) {
+    const sum =
+      arrNum1[arrNum1.length - 1 - i] + arrNum2[arrNum2.length - 1 - i] + carry;
+    arrResult.push(sum % 10);
+    carry = Math.floor(sum / 10);
+  }
 
-    // Add remaining digits from the longer number
-    for (; i < arrNum1.length; i++) {
-        const sum = arrNum1[arrNum1.length - 1 - i] + carry;
-        arrResult.push(sum % 10);
-        carry = Math.floor(sum / 10);
-    }
+  // Add remaining digits from the longer number
+  for (; i < arrNum1.length; i++) {
+    const sum = arrNum1[arrNum1.length - 1 - i] + carry;
+    arrResult.push(sum % 10);
+    carry = Math.floor(sum / 10);
+  }
 
-    // Final carry
-    if (carry > 0) {
-        arrResult.push(carry);
-    }
+  // Final carry
+  if (carry > 0) {
+    arrResult.push(carry);
+  }
 
-    return arrResult.reverse().join('');
+  return arrResult.reverse().join("");
 }
 
-console.log(addStringNumbers2('1', '999')); // Expected: '12690'
+console.log(addStringNumbers2("1", "999")); // Expected: '12690'
 
 //Coding challenge #31a. Create a function that will return the number of words in a text
-function countWords(string){
-    const words = string.split(" ");
-    return words.length-1;
+function countWords(string) {
+  const words = string.split(" ");
+  return words.length - 1;
 }
 
 //better
 
 function countWords(text) {
-    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+  return text
+    .trim()
+    .split(/\s+/)
+    .filter((word) => word.length > 0).length;
 }
 
-
-
-console.log(countWords("This is my text, it's a string of words and punctuation.  Let's see what happens when I try to analyse it for wordcount."));
+console.log(
+  countWords(
+    "This is my text, it's a string of words and punctuation.  Let's see what happens when I try to analyse it for wordcount."
+  )
+);
 
 //Coding challenge #32. Create a function that will capitalize the first letter of each word in a text
-const testString= "This is my text, it's a string of words and punctuation.  Let's  see what happens    when I try to analyse it for wordcount.";
-
+const testString =
+  "This is my text, it's a string of words and punctuation.  Let's  see what happens    when I try to analyse it for wordcount.";
 
 function capitalizeWords(text) {
-    return text
-        .trim()
-        .split(/\s+/)
-        .map(word => word[0].toUpperCase() + word.slice(1))//returns a new array
-        .join(" ");
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0].toUpperCase() + word.slice(1)) //returns a new array
+    .join(" ");
 }
-
 
 console.log(capitalizeWords(testString));
 
 //Coding challenge #33. Calculate the sum of numbers received in a comma delimited string
 
-const stringNumbers="1, 2, 3, 4, 5, 6";
+const stringNumbers = "1, 2, 3, 4, 5, 6";
 
 function sumString(string) {
-return string.split(',').map(Number).reduce((accumulator, element)=> accumulator + element,0);
+  return string
+    .split(",")
+    .map(Number)
+    .reduce((accumulator, element) => accumulator + element, 0);
 }
 
 console.log(sumString(stringNumbers));
@@ -517,7 +511,7 @@ console.log(sumString(stringNumbers));
 // //Coding challenge #35. Create a function to convert a CSV text to a “bi-dimensional” array
 // *****//TURN THIS INTO A FUNCTION- pass in each row
 // let my2DArray=[];
-// let i=0; 
+// let i=0;
 // let j=0;
 
 // const fs = require('fs');
@@ -538,7 +532,7 @@ console.log(sumString(stringNumbers));
 //         i++;
 
 //         // console.log(row);
-        
+
 //     })
 //     .on('end', () => {
 //         console.log('CSV file successfully processed.');
@@ -552,70 +546,175 @@ console.log(sumString(stringNumbers));
 
 // console.log('\n');
 
+//Coding challenge #39. Implement the Caesar cypher//chosen to leave digits and non-alpha chars alone.  Retaining caps.
 
-    //Coding challenge #39. Implement the Caesar cypher//chosen to leave digits and non-alpha chars alone.  Retaining caps.
-
-const plaintext ="This is my  112secret! messagez.";
-const shift =3;
+const plaintext = "This is my  112secret! messagez.";
+const shift = 3;
 
 function isCharUpper(char) {
-   return char === char.toUpperCase() && char !== char.toLowerCase();
+  return char === char.toUpperCase() && char !== char.toLowerCase();
 }
 
-function caesar(string, number){
-    let chCyph;
-    const isAlphaChar = (char) => /^[a-zA-Z]$/.test(char);
-    let arrEncrypted=[];
-for (let i=0; i<string.length; i++)
-    {
-    let ch=Math.floor(string.charCodeAt(i));
+function caesar(string, number) {
+  let chCyph;
+  const isAlphaChar = (char) => /^[a-zA-Z]$/.test(char);
+  let arrEncrypted = [];
+  for (let i = 0; i < string.length; i++) {
+    let ch = Math.floor(string.charCodeAt(i));
 
-    let a = isCharUpper(string[i]) ? Math.floor('A'.charCodeAt(0)): Math.floor('a'.charCodeAt(0));
+    let a = isCharUpper(string[i])
+      ? Math.floor("A".charCodeAt(0))
+      : Math.floor("a".charCodeAt(0));
 
     // console.log(isAlphaChar(string[i]));
-    if(isAlphaChar(string[i]))
-        {chCyph= ((ch - a) + number)% 26 + a;}
-    else {chCyph= ch;}
+    if (isAlphaChar(string[i])) {
+      chCyph = ((ch - a + number) % 26) + a;
+    } else {
+      chCyph = ch;
+    }
 
     // console.log(`ch: ${string[i]} ${ch} A: ${a} number: ${number} ch - a= ${(ch - a)} mod: ${((ch - a) + number)% 26} final: ${((ch - a) + number)% 26 + a} chCyph: ${chCyph}`);
 
     arrEncrypted.push(chCyph);
-    }
-let encryptedChars=arrEncrypted.map(num=>String.fromCharCode(num));
-// console.log(encryptedChars);
+  }
+  let encryptedChars = arrEncrypted.map((num) => String.fromCharCode(num));
+  // console.log(encryptedChars);
 
-return encryptedChars.join('');}
+  return encryptedChars.join("");
+}
 
-console.log(caesar(plaintext,shift));
-
+console.log(caesar(plaintext, shift));
 
 //Coding challenge #40. Implement the bubble sort algorithm for an array of numbers
-unsorted =[-10,-1,-200,5,3,7,8,6];
+unsorted = [-10, -1, -200, 5, 3, 7, 8, 6];
 
-function bubble_sort(array)
-{
-for(let i=0; i < array.length; i++)
-    {
-        
-       for (let j=0; j < array.length-1-i; j++)
-       {
-        if (array[j] > array[j+1])
-            {let temp=array[j];
-            array[j] = array[j+1];
-            array[j+1] = temp;
+function bubble_sort(array) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length - 1 - i; j++) {
+      if (array[j] > array[j + 1]) {
+        let temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
 
-            // for (let k=0; k<array.length; k++)
-            // {console.log(array[k]);
-            // }  
-        
-        }
-
-        }
+        // for (let k=0; k<array.length; k++)
+        // {console.log(array[k]);
+        // }
+      }
     }
-    return array;
+  }
+  return array;
 }
 
 console.log(bubble_sort(unsorted));
 
-//Coding challenge #41. Create a function to calculate the distance 
+//Coding challenge #41. Create a function to calculate the distance
 // between two points defined by their x, y coordinates
+
+function distance(x1, y1, x2, y2) {
+  // Calculate the distance using the distance formula
+  const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  return distance;
+}
+
+console.log(distance(1, 2, 1, 6));
+
+//Coding challenge #42. Create a function that will return a Boolean value indicating if two circles defined by center
+//coordinates and radius are intersecting
+function doCirclesOverlap(x1, y1, r1, x2, y2, r2) {
+  // Calculate the distance between the centers of the two circles
+  const distance = Math.hypot(x2 - x1, y2 - y1);
+
+  // Check if the distance is less than or equal to the sum of the radii
+  return distance <= r1 + r2;
+}
+
+//Coding challenge 43. Create a function that will receive a bi-dimensional array as argument and a number and will
+//extract as a unidimensional array the column specified by the number
+
+const myArray43 = [
+  [1, 2, 3, 4],
+  [1, 2, 5, 4],
+  [1, 2, 6, 4],
+  [1, 2, 7, 4],
+];
+
+//old skool
+
+let new1Array = [];
+
+function new1dArray(array, index) {
+  for (let i = 0; i < array.length; i++) {
+    new1Array.push(array[i][index]);
+  }
+  return new1Array;
+}
+
+console.log(new1dArray(myArray43, 2));
+
+//second try
+
+function new1dArray2(array, index) {
+  return array.map((e) => e[index]);
+}
+console.log(new1dArray2(myArray43, 2));
+
+//third try
+const new1dArrow = (array, index) => array.map((e) => e[index]);
+
+console.log(new1dArrow(myArray43, 2));
+
+//Coding challenge #44. Create a function that will convert a string containing a binary number into a number
+
+//[ N = b_n \times 2^n + b_{n-1} \times 2^{n-1} + \ldots + b_1 \times 2^1 + b_0 \times 2^0 ]
+//List the Powers of 2: Write down the powers of 2 from right to left, starting at 2^0 and increasing the exponent by 1 for each position to the left. The number of powers you list should match the number of digits in the binary number you’re converting.
+//Align the Binary Number: Write the binary number below the powers of 2, aligning each digit with its corresponding power of 2.
+//Multiply Each Binary Digit by its Power of 2: For each digit in the binary number, multiply the digit (either 0 or 1) by the corresponding power of 2 //it’s aligned with. This step leverages the binary digit’s place value within the number.
+//Sum the Products: Add together all the products from the previous step. This sum is the decimal equivalent of the binary number.
+const binary = "1011";
+const decimal = parseInt(binary, 2);
+console.log(decimal);
+
+//Coding challenge #45. Create a function to calculate the sum of all the numbers in a jagged array (array contains
+//numbers or other arrays of numbers on an unlimited number of levels)
+const jaggedArray = [
+  [1, 2, 3], // First inner array with 3 elements
+  [4, 5], // Second inner array with 2 elements
+  [6, 7, 8, [10, 20, [500, 600]]], // Third inner array with 4 elements
+  [], // Fourth inner array is empty
+];
+
+function jagged(array) {
+  return array.flat(Infinity).reduce((a, e) => a + e, 0);
+}
+
+console.log(jagged(jaggedArray));
+
+//Coding challenge #46-a. Find the maximum number in a jagged array of numbers or array of numbers
+let largestJagged = (array) => Math.max(...array.flat(Infinity));
+
+console.log(largestJagged(jaggedArray));
+
+//Coding challenge #47. Deep copy a jagged array with numbers or other arrays in a new array
+const clonedArray = structuredClone(jaggedArray);
+console.log("Cloned Array:", clonedArray);
+
+//Coding challenge #48. Create a function to return the longest word(s) in a string
+
+const myString48 =
+  "Here are a lot of words, some short and some ridiculously long.";
+
+function findLongestWord(string) {
+  let longestWord = [];
+
+  //get index of end of first word
+  for (i = 0; i < string.length; i++) {
+    if (string[i].toLowerCase() !== string[i].toUpperCase()) {
+      longestWord.push(string[i]);
+    }
+  }
+  return longestWord;
+}
+findLongestWord(myString48);
+
+console.log(findLongestWord(myString48));
+//const chars = [...str];
