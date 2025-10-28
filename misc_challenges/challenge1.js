@@ -786,3 +786,13 @@ function countOccurrences(str) {
 
 const occurrences = countOccurrences(myString51);
 console.log(occurrences);
+
+[
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+// Task: Return [1, 2, 3, 6, 9, 8, 7, 4, 5]
+
+//Input: "aaabbc"
+// Task: Return "a3b2c1"
