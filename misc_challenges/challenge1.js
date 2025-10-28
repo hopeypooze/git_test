@@ -787,12 +787,80 @@ function countOccurrences(str) {
 const occurrences = countOccurrences(myString51);
 console.log(occurrences);
 
-[
+// Input: A string like "Pass123!"
+// Task: Return true if it contains at least one uppercase, one lowercase, one digit, and one special character.
+// Focus: regex, string methods, logical operators
+//super clunky first pass
+
+function checkPasswordStrength1(string) {
+  const passwordArray = string.split("");
+  const caps = passwordArray.filter((el) => /[A-Z]/.test(el));
+  const lower = passwordArray.filter((el) => /[a-z]/.test(el));
+  const number = passwordArray.filter((el) => /[0-9]/.test(el));
+  const special = passwordArray.filter((el) =>
+    /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(el)
+  );
+
+  const valid =
+    caps.length && lower.length && number.length && special.length
+      ? true
+      : false;
+  return valid;
+}
+console.log(checkPasswordStrength1("aB1c&"));
+
+//trying leaving it as a string- IDIOMATIC YAY
+
+const checkPasswordStrength2 = (password) => {
+  const valid2 =
+    /[A-Z]/.test(password) &&
+    /[a-z]/.test(password) &&
+    /[0-9]/.test(password) &&
+    /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)
+      ? true
+      : false;
+  console.log(password);
+  return valid2;
+};
+
+console.log(checkPasswordStrength2("Abc1234"));
+
+const spiralArray = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
 ];
 // Task: Return [1, 2, 3, 6, 9, 8, 7, 4, 5]
+for (let i = 0; i < spiralArray.length; i++) {
+  console.log(`row ${i}, of ${spiralArray.length - 1}`);
+  if (i === spiralArray.length - 1) {
+    console.log("last row:");
+  }
+  for (let j = 0; j < spiralArray.length; j++) {
+    console.log(spiralArray[i][j]);
+  }
+
+  console.log("end of ");
+}
+
+//
+// 🧮 2. Roman Numeral Converter
+// Input: 1994
+// Task: Return "MCMXCIV"
+// Focus: object mapping, while loops, string concatenation
 
 //Input: "aaabbc"
 // Task: Return "a3b2c1"
+
+//Input: "tree"
+// Task: Return "eetr" (characters sorted by frequency)
+// Focus: object counting, sort(), map()
+
+//Input: ["bat", "tab", "tap", "pat", "top", "pot"]
+// Task: Group anagrams together:
+//[
+//   ["bat", "tab"],
+//   ["tap", "pat"],
+//   ["top", "pot"]
+// ]
+//Focus: sort(), object keys, arrays of arrays
