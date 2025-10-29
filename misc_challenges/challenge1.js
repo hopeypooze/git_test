@@ -830,17 +830,91 @@ const spiralArray = [
   [4, 5, 6],
   [7, 8, 9],
 ];
-// Task: Return [1, 2, 3, 6, 9, 8, 7, 4, 5]
+// TRAVERSE AN ARRAY IN A SPIRAL Task: Return [1, 2, 3, 6, 9, 8, 7, 4, 5]
+const newArray = [];
+let currentRow; //0- first, 1- middle, 2- last
+var hitBottom = false;
+
 for (let i = 0; i < spiralArray.length; i++) {
-  console.log(`row ${i}, of ${spiralArray.length - 1}`);
+  // console.log(`row ${i}, of ${spiralArray.length - 1}`);
   if (i === spiralArray.length - 1) {
-    console.log("last row:");
+    // console.log("last row:");
+    currentRow = 2;
+    hitBottom = true;
+  } else if (i === 0) {
+    // console.log("first row");
+    currentRow = 0;
+  } else {
+    // console.log("middle rows");
+    currentRow = 1;
   }
   for (let j = 0; j < spiralArray.length; j++) {
+    if (currentRow === 0) {
+      newArray.push(spiralArray[i][j]);
+    } else if (currentRow === 2) {
+      let temp = [...spiralArray[i]].reverse();
+
+      // console.log(temp);
+      newArray.push(...temp);
+      break;
+    } else {
+      if (!hitBottom) {
+        // console.log("middle rows");
+        newArray.push(spiralArray[i][spiralArray.length - 1]);
+        hitBottom = true;
+        break;
+      }
+    }
     console.log(spiralArray[i][j]);
   }
+}
 
-  console.log("end of ");
+if (hitBottom) {
+  //get the penultimate row
+
+  newArray.push(...spiralArray[spiralArray.length - 2]);
+}
+console.log(newArray);
+
+//./nicer solution:
+function spiralTraverse(matrix) {
+  const result = [];
+  let top = 0;
+  let bottom = matrix.length - 1;
+  let left = 0;
+  let right = matrix[0].length - 1;
+
+  while (top <= bottom && left <= right) {
+    // Traverse top row
+    for (let i = left; i <= right; i++) {
+      result.push(matrix[top][i]);
+    }
+    top++;
+
+    // Traverse right column
+    for (let i = top; i <= bottom; i++) {
+      result.push(matrix[i][right]);
+    }
+    right--;
+
+    // Traverse bottom row
+    if (top <= bottom) {
+      for (let i = right; i >= left; i--) {
+        result.push(matrix[bottom][i]);
+      }
+      bottom--;
+    }
+
+    // Traverse left column
+    if (left <= right) {
+      for (let i = bottom; i >= top; i--) {
+        result.push(matrix[i][left]);
+      }
+      left++;
+    }
+  }
+
+  return result;
 }
 
 //
