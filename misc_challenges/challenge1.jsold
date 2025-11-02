@@ -839,92 +839,13 @@ for (let i = 0; i < spiralArray.length; i++) {
   // console.log(`row ${i}, of ${spiralArray.length - 1}`);
   if (i === spiralArray.length - 1) {
     // console.log("last row:");
-<<<<<<< HEAD
   }
   for (let j = 0; j < spiralArray.length; j++) {
     // console.log(spiralArray[i][j]);
-=======
-    currentRow = 2;
-    hitBottom = true;
-  } else if (i === 0) {
-    // console.log("first row");
-    currentRow = 0;
-  } else {
-    // console.log("middle rows");
-    currentRow = 1;
-  }
-  for (let j = 0; j < spiralArray.length; j++) {
-    if (currentRow === 0) {
-      newArray.push(spiralArray[i][j]);
-    } else if (currentRow === 2) {
-      let temp = [...spiralArray[i]].reverse();
-
-      // console.log(temp);
-      newArray.push(...temp);
-      break;
-    } else {
-      if (!hitBottom) {
-        // console.log("middle rows");
-        newArray.push(spiralArray[i][spiralArray.length - 1]);
-        hitBottom = true;
-        break;
-      }
-    }
-    console.log(spiralArray[i][j]);
->>>>>>> 22c170e5c8a539a5d3fd458290877c264264d4bc
   }
 }
 
-<<<<<<< HEAD
   //   console.log("end of ");
-=======
-if (hitBottom) {
-  //get the penultimate row
-
-  newArray.push(...spiralArray[spiralArray.length - 2]);
-}
-console.log(newArray);
-
-//./nicer solution:
-function spiralTraverse(matrix) {
-  const result = [];
-  let top = 0;
-  let bottom = matrix.length - 1;
-  let left = 0;
-  let right = matrix[0].length - 1;
-
-  while (top <= bottom && left <= right) {
-    // Traverse top row
-    for (let i = left; i <= right; i++) {
-      result.push(matrix[top][i]);
-    }
-    top++;
-
-    // Traverse right column
-    for (let i = top; i <= bottom; i++) {
-      result.push(matrix[i][right]);
-    }
-    right--;
-
-    // Traverse bottom row
-    if (top <= bottom) {
-      for (let i = right; i >= left; i--) {
-        result.push(matrix[bottom][i]);
-      }
-      bottom--;
-    }
-
-    // Traverse left column
-    if (left <= right) {
-      for (let i = bottom; i >= top; i--) {
-        result.push(matrix[i][left]);
-      }
-      left++;
-    }
-  }
-
-  return result;
->>>>>>> 22c170e5c8a539a5d3fd458290877c264264d4bc
 }
 
 //
