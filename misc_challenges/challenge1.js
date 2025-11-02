@@ -101,19 +101,19 @@ function findMax(array) {
 console.log(findMax(arr12));
 
 //Coding challenge #14: Print the first 10 Fibonacci numbers without recursion
-let b = 0;
-let c = 1;
+// let b = 0;
+// let c = 1;
 
-console.log(b);
-console.log(c);
+// console.log(b);
+// console.log(c);
 
-for (let i = 2; i < 10; i++) {
-  let a = b + c;
-  console.log(a);
+// for (let i = 2; i < 10; i++) {
+//   let a = b + c;
+//   console.log(a);
 
-  b = c;
-  c = a;
-}
+//   b = c;
+//   c = a;
+// }
 
 //Coding challenge #15: Create a function that will find the nth Fibonacci number using recursion
 
@@ -832,15 +832,15 @@ const spiralArray = [
 ];
 // Task: Return [1, 2, 3, 6, 9, 8, 7, 4, 5]
 for (let i = 0; i < spiralArray.length; i++) {
-  console.log(`row ${i}, of ${spiralArray.length - 1}`);
+  // console.log(`row ${i}, of ${spiralArray.length - 1}`);
   if (i === spiralArray.length - 1) {
-    console.log("last row:");
+    // console.log("last row:");
   }
   for (let j = 0; j < spiralArray.length; j++) {
-    console.log(spiralArray[i][j]);
+    // console.log(spiralArray[i][j]);
   }
 
-  console.log("end of ");
+  //   console.log("end of ");
 }
 
 //
@@ -849,12 +849,148 @@ for (let i = 0; i < spiralArray.length; i++) {
 // Task: Return "MCMXCIV"
 // Focus: object mapping, while loops, string concatenation
 
+//a large number written to the left of a smaller number -> a+b
+//LS -> L+S
+//a larger number written to thr ight of a smaller number -> greater - lesser
+//SL -> L-S
+
+const romanNumerals = {
+  i: 1,
+  v: 5,
+  x: 10,
+  l: 50,
+  c: 100,
+  d: 500,
+  m: 1000,
+};
+
+function convertFromRoman(string) {
+  const romanInput = string.toLowerCase().split("");
+
+  let r = romanInput.length - 1;
+  let l = romanInput.length - 2;
+  let s = 0; //sum
+  while (romanInput.length >= 2) {
+    r = romanNumerals[romanInput[romanInput.length - 1]];
+    l = romanNumerals[romanInput[romanInput.length - 2]];
+
+    s += l < r ? r - l : r + l;
+    romanInput.pop();
+    romanInput.pop();
+  }
+  romanInput.length > 0 && (s += romanNumerals[romanInput]);
+
+  return s;
+}
+
+console.log(convertFromRoman("MCMXCIX"));
+
+const romanDecimalPlaces = {
+  thousands: [null, "M", "MM", "MMM"],
+  hundreds: [null, "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"],
+  tens: [null, "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],
+  ones: [null, "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+};
+
+function convertToRoman(num) {
+  const inputString = num.toString();
+  let converted = [];
+
+  if (inputString.length <= 4 && Number(inputString) < 4000) {
+    for (let i = inputString.length - 1; i >= 0; i--) {
+      let currentKey =
+        i === 3
+          ? "thousands"
+          : i === 2
+          ? "hundreds"
+          : i === 1
+          ? "tens"
+          : "ones";
+
+      converted.push(
+        romanDecimalPlaces[currentKey][
+          Number(inputString[inputString.length - 1 - i])
+        ]
+      );
+    }
+    return converted.join("");
+  } else {
+    return "Roman numerals must be less than 3,999";
+  }
+}
+console.log(convertToRoman(1920));
+
 //Input: "aaabbc"
 // Task: Return "a3b2c1"
 
+function freqCount(countString) {
+  const freqArray = [];
+
+  freqArray.push([countString[0], 1]);
+  let curIndex = freqArray.length - 1;
+
+  for (let i = 1; i <= countString.length - 1; i++) {
+    if (countString[i] === countString[i - 1]) {
+      freqArray[curIndex][1]++;
+    } else {
+      freqArray.push([countString[i], 1]);
+      curIndex = freqArray.length - 1;
+    }
+  }
+  return freqArray.flat().join("");
+}
+
+console.log(freqCount("cccabbbcccc"));
+
 //Input: "tree"
 // Task: Return "eetr" (characters sorted by frequency)
-// Focus: object counting, sort(), map()
+
+function stringByFrequency(startString) {
+  const holdArray = [];
+  sortedString = startString.split("").sort().join("");
+
+  for (let i = 0; i < sortedString.length; i++) {
+    currentEl = sortedString[i];
+
+    let countFilter = sortedString
+      .split("")
+
+      .filter((el) => el === currentEl).length;
+
+    if (currentEl != sortedString[i - 1]) {
+      holdArray.push([currentEl, countFilter]);
+    }
+  }
+
+  holdArray.sort((a, b) => b[1] - a[1]);
+
+  let newString = "";
+  for (let i = 0; i < holdArray.length; i++) {
+    newString = newString + holdArray[i][0].repeat(holdArray[i][1]);
+  }
+  return newString;
+}
+
+console.log(stringByFrequency("treerettt"));
+
+//smarter version using frequency map
+function stringByFrequency(startString) {
+  const freqMap = {};
+
+  // Count frequencies
+  for (const char of startString) {
+    freqMap[char] = (freqMap[char] || 0) + 1;
+  }
+
+  // Convert to array and sort by frequency
+  const sortedArray = Object.entries(freqMap).sort((a, b) => b[1] - a[1]);
+
+  // Build the result string
+  return sortedArray.map(([char, count]) => char.repeat(count)).join("");
+}
+
+console.log(stringByFrequency("treerettt")); // Output: "ttttrreee"
+``;
 
 //Input: ["bat", "tab", "tap", "pat", "top", "pot"]
 // Task: Group anagrams together:
