@@ -1099,3 +1099,71 @@ console.log(sortedArray.map(([char, count]) => char.repeat(count)).join(""));
 //   ["tap", "pat"],
 //   ["top", "pot"]
 // ]
+const words = [
+  "pooh",
+  "bat",
+  "tab",
+  "tap",
+  "pat",
+  "top",
+  "pot",
+  "hoop",
+  "blip",
+  "ab",
+  "abb",
+  "lip",
+];
+
+//are strings the same length?
+//are sorted strings exactly the same?
+//then theyre anagrams
+function testAnagrams(words) {
+  let wordA;
+  let wordB;
+  const anagrams = [];
+  for (const i of words) {
+    wordA = [...i].slice().sort();
+
+    for (const j of words) {
+      wordB = [...j].slice().sort();
+      if (
+        wordA.length === wordB.length &&
+        i != j &&
+        wordA.join() === wordB.join()
+      ) {
+        if (!anagrams.flat().includes(i)) {
+          anagrams.push([i, j]);
+        }
+      }
+    }
+  }
+  return anagrams;
+}
+console.log(testAnagrams(words));
+
+//Challenge 1: Group Words by First Letter
+// Input: ["apple", "ant", "banana", "bat", "carrot", "cat"]
+// Task: Group words into arrays by their first letter using a Map.
+// Output:
+// JavaScript[  ["apple", "ant"],  ["banana", "bat"],  ["carrot", "cat"]]Show more lines
+
+// 🔁 Challenge 2: Find All Repeated Characters
+// Input: "mississippi"
+// Task: Return an array of characters that appear more than once.
+// Hint: Use a Map to count occurrences.
+// Output: ["i", "s", "p"]
+
+// 🔤 Challenge 3: Sort Words by Vowel Count
+// Input: ["hope", "nesmith", "is", "coding", "again"]
+// Task: Sort the array by number of vowels in each word.
+// Output: ["nesmith", "is", "hope", "coding", "again"]
+
+// 🔍 Challenge 4: Find All Palindromes
+// Input: ["level", "world", "radar", "hello", "madam"]
+// Task: Return only the words that are palindromes.
+// Output: ["level", "radar", "madam"]
+
+// 🧮 Challenge 5: Count Anagram Groups
+// Input: ["listen", "silent", "enlist", "google", "gogole", "banana"]
+// Task: Use a Map to group anagrams and return the number of groups.
+// Output: 3 (groups: ["listen", "silent", "enlist"], ["google", "gogole"], ["banana"])
