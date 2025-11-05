@@ -1142,16 +1142,42 @@ function testAnagrams(words) {
 console.log(testAnagrams(words));
 
 //Challenge 1: Group Words by First Letter
-// Input: ["apple", "ant", "banana", "bat", "carrot", "cat"]
+const inputArr = ["apple", "ant", "banana", "bat", "carrot", "cat", "aardvark"];
 // Task: Group words into arrays by their first letter using a Map.
 // Output:
 // JavaScript[  ["apple", "ant"],  ["banana", "bat"],  ["carrot", "cat"]]Show more lines
+const tempSet = new Set();
+const groupedArr = [];
 
+for (const i of inputArr) {
+  tempSet.add(i[0]);
+}
+for (const ch of tempSet) {
+  groupedArr.push(inputArr.filter((word) => word[0] === ch));
+}
+
+console.log(groupedArr);
 // 🔁 Challenge 2: Find All Repeated Characters
-// Input: "mississippi"
+// const inputString = "mississippi";
 // Task: Return an array of characters that appear more than once.
 // Hint: Use a Map to count occurrences.
 // Output: ["i", "s", "p"]
+
+function countRepeats(inputString) {
+  const counts = new Map();
+
+  for (const ch of inputString) {
+    counts.set(ch, (counts.get(ch) || 0) + 1);
+  }
+
+  const repeats = [...counts.entries()]
+    .filter(([key, value]) => value > 1)
+    .map(([key, value]) => key);
+
+  return repeats;
+}
+
+console.log(countRepeats("mississippi"));
 
 // 🔤 Challenge 3: Sort Words by Vowel Count
 // Input: ["hope", "nesmith", "is", "coding", "again"]
