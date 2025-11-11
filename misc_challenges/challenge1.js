@@ -1180,16 +1180,145 @@ function countRepeats(inputString) {
 console.log(countRepeats("mississippi"));
 
 // 🔤 Challenge 3: Sort Words by Vowel Count
-// Input: ["hope", "nesmith", "is", "coding", "again"]
+const vowelCountArr = [
+  "hope",
+  "nesmith",
+  "is",
+  "aaadrvark",
+  "vvvvxz",
+  "coding",
+  "again",
+];
 // Task: Sort the array by number of vowels in each word.
 // Output: ["nesmith", "is", "hope", "coding", "again"]
+function countVowels(a) {
+  let regex = /^[aeiouAEIOU]$/;
+  const countsV = new Map();
+  let x;
+  for (const word of a) {
+    for (const l of word) {
+      x = regex.test(l) ? 1 : 0;
+      // if (regex.test(l)) {//didn't add words with no vowels
+      countsV.set(word, (countsV.get(word) || 0) + x);
+      // }
+    }
+  }
+  const sortedbyVowelCount = [...countsV]
+    .sort((a, b) => a[1] - b[1])
+    .map((el) => el[0]);
+  console.log(countsV);
+  return sortedbyVowelCount;
+}
+
+console.log(countVowels(vowelCountArr));
 
 // 🔍 Challenge 4: Find All Palindromes
-// Input: ["level", "world", "radar", "hello", "madam"]
+const palArray = ["level", "world", "radar", "hello", "mmadamm"];
 // Task: Return only the words that are palindromes.
 // Output: ["level", "radar", "madam"]
+function isPalindrome(word) {
+  let pass = true;
+  let turn = Math.floor(word.length / 2);
+  let end = word.length - 1;
+  for (let j = 0; j <= turn; j++) {
+    pass = word[0 + j] === word[end - j] ? true : false;
+    // console.log(word[0 + j], word[end - j], word[0 + j] === word[end - j]);
+    if (pass === false) return pass;
+  }
+  return pass;
+}
+
+function listPalindromes(palArray) {
+  const palindromesArr = [];
+  for (const word of palArray) {
+    if (isPalindrome(word)) {
+      palindromesArr.push(word);
+    }
+  }
+  return palindromesArr;
+}
+
+console.log(listPalindromes(palArray));
 
 // 🧮 Challenge 5: Count Anagram Groups
-// Input: ["listen", "silent", "enlist", "google", "gogole", "banana"]
+const inputWords = [
+  "listen",
+  "silent",
+  "enlist",
+  "google",
+  "gogole",
+  "roange",
+  "banana",
+  "apple",
+  "orange",
+];
 // Task: Use a Map to group anagrams and return the number of groups.
 // Output: 3 (groups: ["listen", "silent", "enlist"], ["google", "gogole"], ["banana"])
+
+//for each word, test if other words are anagrams
+//for each yes -> add to array
+
+const anaMap = new Map();
+
+for (const word of inputWords) {
+  if (!anaMap.has([...word].sort().join("")))
+    anaMap.set([...word].sort().join(""), []);
+  const anArray = anaMap.get([...word].sort().join(""));
+
+  anArray.push(word);
+}
+
+console.log(`Groups: ${anaMap.size}:`);
+console.log([...anaMap.values()]);
+let index = 1;
+anaMap.forEach((value, key) => {
+  console.log(`Group ${index} ${value}`);
+  index++;
+});
+
+//Challenge 1: Count Word Frequencies
+// Given an array of words, return a Map where:
+
+// Key = word
+// Value = number of times it appears
+// Example:
+// ["apple", "banana", "apple", "orange", "banana", "apple"] →
+// Map { "apple" → 3, "banana" → 2, "orange" → 1 }
+
+// ✅ Challenge 2: Group Numbers by Parity
+// Given an array of integers, group them into two arrays:
+
+// One for even numbers
+// One for odd numbers
+// Return an object like:
+// { even: [2, 4, 6], odd: [1, 3, 5] }
+
+// ✅ Challenge 3: Index Words by First Letter
+// Given an array of words, create a Map where:
+
+// Key = first letter
+// Value = array of words starting with that letter
+// Example:
+// ["apple", "ant", "banana", "berry", "carrot"] →
+// Map { "a" → ["apple", "ant"], "b" → ["banana", "berry"], "c" → ["carrot"] }
+
+// ✅ Challenge 4: Find Duplicate Elements
+// Given an array of numbers, return an array of all numbers that appear more than once.
+// Example:
+// [1, 2, 3, 2, 4, 5, 1] → [1, 2]
+
+// ✅ Challenge 5: Reverse Lookup
+// You have an object like:
+// { a: 1, b: 2, c: 1 }
+// Return a Map where:
+
+// Key = value from the object
+// Value = array of keys that had that value
+// Example:
+// Map { 1 → ["a", "c"], 2 → ["b"] }
+
+// These will make you think about:
+
+// When to use Map vs Object (hint: Maps are great for dynamic keys).
+// How to use array methods like reduce(), filter(), map(), and forEach() effectively.
+// How to normalize data for grouping.
