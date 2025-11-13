@@ -1282,8 +1282,15 @@ anaMap.forEach((value, key) => {
 // Key = word
 // Value = number of times it appears
 // Example:
-// ["apple", "banana", "apple", "orange", "banana", "apple"] →
+const wordsArr = ["apple", "banana", "apple", "orange", "banana", "apple"];
 // Map { "apple" → 3, "banana" → 2, "orange" → 1 }
+
+const frequencyMap = new Map();
+
+for (const word of wordsArr) {
+  frequencyMap.set(word, (frequencyMap.get(word) || 0) + 1);
+}
+// console.log(frequencyMap);
 
 // ✅ Challenge 2: Group Numbers by Parity
 // Given an array of integers, group them into two arrays:
@@ -1293,6 +1300,43 @@ anaMap.forEach((value, key) => {
 // Return an object like:
 // { even: [2, 4, 6], odd: [1, 3, 5] }
 
+testArray = [1, 2, 3, 4, 5, 6, 7, 8];
+// function paritySort(testArray) {
+//   const parityMap = new Map();
+
+//   for (n of testArray) {
+//     let pKey = n % 2 === 0 ? "Even" : "Odd";
+
+//     if (parityMap.get(pKey)) {
+//       const pArray = parityMap.get(pKey);
+//       pArray.push(n);
+//       parityMap.set(pKey, pArray);//don't need this as the updated array is a reference
+//     } else {
+//       parityMap.set(pKey, [n]);
+//     }
+//   }
+//   return Object.fromEntries(parityMap.entries());
+// }
+
+// console.log(paritySort(testArray));
+
+//another method- use reduce to do it in one pass
+
+// function paritySortReduce(testArray) {
+//   const pArray = testArray.reduce(
+//     (acc, el) => {
+//       let p = el % 2 === 0 ? "even" : "odd";
+//       acc[p].push(el);
+//       // console.log(acc);
+//       return acc;
+//     },
+//     { even: [], odd: [] }
+//   );
+//   return pArray;
+// }
+
+// console.log(paritySortReduce(testArray));
+
 // ✅ Challenge 3: Index Words by First Letter
 // Given an array of words, create a Map where:
 
@@ -1301,6 +1345,46 @@ anaMap.forEach((value, key) => {
 // Example:
 // ["apple", "ant", "banana", "berry", "carrot"] →
 // Map { "a" → ["apple", "ant"], "b" → ["banana", "berry"], "c" → ["carrot"] }
+
+const Arr3 = ["apple", "ant", "banana", "berry", "carrot"];
+
+// function sortByFirstLetter(Arr3) {
+//   const fMap = new Map();
+
+//   for (const w of Arr3) {
+//     if (!fMap.has(w[0])) {
+//       fMap.set(w[0], [w]);
+//     } else {
+//       fMap.get(w[0]).push(w);
+//     }
+//   }
+//   return fMap;
+// }
+
+// console.log(sortByFirstLetter(Arr3));
+
+//using reduce
+
+// function sortByFirstLetterReduce(Arr3) {
+//   const fMap = Arr3.reduce((acc, el) => {
+//     if (acc.has(el[0])) {
+//       acc.get(el[0]).push(el);
+//     } else {
+//       acc.set(el[0], [el]);
+//     }
+
+//     return acc;
+//   }, new Map());
+//   return fMap;
+// }
+
+// console.log(sortByFirstLetterReduce(Arr3));
+
+//using groupBy()
+
+const groupByFirstLetter = Object.groupBy(Arr3, (el) => el[0]);
+
+console.log(groupByFirstLetter);
 
 // ✅ Challenge 4: Find Duplicate Elements
 // Given an array of numbers, return an array of all numbers that appear more than once.
@@ -1322,3 +1406,51 @@ anaMap.forEach((value, key) => {
 // When to use Map vs Object (hint: Maps are great for dynamic keys).
 // How to use array methods like reduce(), filter(), map(), and forEach() effectively.
 // How to normalize data for grouping.
+//Challenge 6: Group Words by Length
+// Given an array of words, create a Map where:
+
+// Key = word length
+// Value = array of words with that length
+// Example:
+// ["cat", "dog", "apple", "pear"] →
+// Map { 3 → ["cat", "dog"], 5 → ["apple"], 4 → ["pear"] }
+
+// ✅ Challenge 7: Character Frequency Across All Words
+// Given an array of words, return an object where:
+
+// Key = character
+// Value = total number of times it appears across all words
+// Example:
+// ["apple", "pear"] →
+// { a: 2, p: 3, l: 1, e: 2, r: 1 }
+
+// ✅ Challenge 8: Group Objects by Property
+// You have an array of objects like:
+// [
+//   { name: "Alice", role: "admin" },
+//   { name: "Bob", role: "user" },
+//   { name: "Carol", role: "admin" }
+// ]
+
+// Group them by role using a Map:
+// Map { "admin" → [{...}, {...}], "user" → [{...}] }
+
+// ✅ Challenge 9: Find All Unique Pairs That Sum to Target
+// Given an array of numbers and a target sum, return all unique pairs that add up to the target.
+// Example:
+// [1, 2, 3, 4, 5], target = 6 →
+// [[1, 5], [2, 4]]
+
+// ✅ Challenge 10: Invert a Nested Object
+// Given:
+// {
+//   fruits: ["apple", "banana"],
+//   veggies: ["carrot", "pea"]
+// }
+
+// Return a Map where:
+
+// Key = item
+// Value = category
+// Example:
+// Map { "apple" → "fruits", "banana" → "fruits", "carrot" → "veggies", "pea" → "veggies" }
