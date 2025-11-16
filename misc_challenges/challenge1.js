@@ -1389,7 +1389,15 @@ console.log(groupByFirstLetter);
 // ✅ Challenge 4: Find Duplicate Elements
 // Given an array of numbers, return an array of all numbers that appear more than once.
 // Example:
-// [1, 2, 3, 2, 4, 5, 1] → [1, 2]
+// [1, 5, 2, 3, 2, 4, 5, 1] → [1, 2]
+arr5 = [1, 5, 2, 3, 2, 4, 5, 1];
+//iterate through the array and for each element, check if the first occurrence
+// index is different from the current index. (index is a parameter of filter())
+const result5 = [
+  ...new Set(arr5.filter((el, index) => arr5.indexOf(el) !== index)), //array to set to array to clean out duplicates
+];
+
+console.log(result5); // Output: [2, 4, 5]
 
 // ✅ Challenge 5: Reverse Lookup
 // You have an object like:
@@ -1401,56 +1409,172 @@ console.log(groupByFirstLetter);
 // Example:
 // Map { 1 → ["a", "c"], 2 → ["b"] }
 
-// These will make you think about:
-
-// When to use Map vs Object (hint: Maps are great for dynamic keys).
-// How to use array methods like reduce(), filter(), map(), and forEach() effectively.
-// How to normalize data for grouping.
-//Challenge 6: Group Words by Length
+// Challenge 6: Group Words by Length
 // Given an array of words, create a Map where:
 
 // Key = word length
 // Value = array of words with that length
 // Example:
-// ["cat", "dog", "apple", "pear"] →
+const arr6 = ["cat", "dog", "apple", "pear"];
 // Map { 3 → ["cat", "dog"], 5 → ["apple"], 4 → ["pear"] }
 
-// ✅ Challenge 7: Character Frequency Across All Words
-// Given an array of words, return an object where:
+function groupByLength(arr6) {
+  const gMap = arr6.reduce((acc, el) => {
+    if (acc.has(el.length)) {
+      acc.get(el.length).push(el);
+    } else {
+      acc.set(el.length, [el]);
+    }
 
-// Key = character
-// Value = total number of times it appears across all words
-// Example:
-// ["apple", "pear"] →
-// { a: 2, p: 3, l: 1, e: 2, r: 1 }
+    return acc;
+  }, new Map());
+  return gMap;
+}
 
-// ✅ Challenge 8: Group Objects by Property
-// You have an array of objects like:
-// [
-//   { name: "Alice", role: "admin" },
-//   { name: "Bob", role: "user" },
-//   { name: "Carol", role: "admin" }
-// ]
+console.log(groupByLength(arr6));
+// // ✅ Challenge 7: Character Frequency Across All Words
+// // Given an array of words, return an object where:
 
-// Group them by role using a Map:
-// Map { "admin" → [{...}, {...}], "user" → [{...}] }
+// // Key = character
+// // Value = total number of times it appears across all words
+// // Example:
+const arr7 = ["apple", "pear"];
+// // { a: 2, p: 3, l: 1, e: 2, r: 1 }
 
-// ✅ Challenge 9: Find All Unique Pairs That Sum to Target
-// Given an array of numbers and a target sum, return all unique pairs that add up to the target.
-// Example:
-// [1, 2, 3, 4, 5], target = 6 →
-// [[1, 5], [2, 4]]
+function charFreq(arr) {
+  const arr7 = [...arr.join("")];
 
-// ✅ Challenge 10: Invert a Nested Object
-// Given:
-// {
-//   fruits: ["apple", "banana"],
-//   veggies: ["carrot", "pea"]
-// }
+  const Map7 = arr7.reduce((acc, el) => {
+    if (acc.has(el)) {
+      acc.set(el, acc.get(el) + 1);
+    } else {
+      acc.set(el, 1);
+    }
 
-// Return a Map where:
+    return acc;
+  }, new Map());
+  const object7 = Object.fromEntries(Map7.entries());
+  return object7;
+}
 
-// Key = item
-// Value = category
-// Example:
-// Map { "apple" → "fruits", "banana" → "fruits", "carrot" → "veggies", "pea" → "veggies" }
+console.log(charFreq(arr7));
+
+// // ✅ Challenge 8: Group Objects by Property
+// // You have an array of objects like:
+const arr8 = [
+  { name: "Alice", role: "admin" },
+  { name: "Bob", role: "user" },
+  { name: "Carol", role: "admin" },
+  { name: "Pete", role: "pirate" },
+];
+// // Group them by role using a Map:
+// // Map { "admin" → [{...}, {...}], "user" → [{...}] }
+function groupByRole(arr) {
+  const Map8 = arr.reduce((acc, el) => {
+    const { name, role } = el;
+
+    if (acc.has(role)) {
+      acc.get(role).push({ name });
+    } else {
+      acc.set(role, [{ name }]);
+    }
+
+    return acc;
+  }, new Map());
+
+  return Map8;
+}
+
+console.log(groupByRole(arr8));
+
+// // ✅ Challenge 9: Find All Unique Pairs That Sum to Target
+// // Given an array of numbers and a target sum, return all unique pairs that add up to the target.
+// // Example:
+const arr9 = [7, 1, 2, 3, 4, 15, 5, 3];
+const target = 8;
+
+const pairsArrayReduce = arr9.reduce(
+  (accArr, el, i, a) => {
+    for (const [index, value] of arr9.entries()) {
+      if (
+        !accArr.some((subArray) => subArray.includes(el)) &&
+        index != i &&
+        el + value === target
+      ) {
+        accArr.push([el, value]);
+      }
+    }
+    return accArr;
+  },
+
+  []
+);
+
+console.log(pairsArrayReduce);
+// // [[1, 5], [2, 4]]
+
+//for adding pairs of numbers:
+// In JavaScript, the “two-pointer” technique is just a pattern—you simulate pointers by using two index variables that move through the array:
+
+// Start with left = 0 and right = arr.length - 1.
+// While left < right:
+
+// Compute sum = arr[left] + arr[right].
+// If sum === target, record the pair and move both pointers inward.
+// If sum < target, move left forward.
+// If sum > target, move right backward.
+
+// So you’re not creating actual pointers like in C—you’re just using indexes
+// as pseudo-pointers. This works best on a sorted array, because then you can
+// decide which pointer to move based on whether the sum is too small or too large.
+function findPairs(array, t) {
+  const ptrArray = array.sort((a, b) => a - b);
+  const pairsArr = [];
+
+  let left = 0;
+  let right = ptrArray.length - 1;
+  // const t = 8; //target
+  while (left < right) {
+    let s = ptrArray[left] + ptrArray[right];
+    if (s < t) left++;
+    else if (s > t) right--;
+    else {
+      pairsArr.push([ptrArray[left], ptrArray[right]]);
+      left++;
+      right--;
+    }
+  }
+  return pairsArr;
+}
+
+console.log(findPairs([3, 7, 2, 3, 4, 5, 3, 4, 6, 1, 8, 9, 10, 4], 8));
+
+// // ✅ Challenge 10: Invert a Nested Object
+// // Given:
+const fruitObj = {
+  fruits: ["apple", "banana", "tomato"],
+  veggies: ["carrot", "pea", "tomato"],
+};
+
+// // Return a Map where:
+
+// // Key = item
+// // Value = category
+// // Example:
+// // Map { "apple" → "fruits", "banana" → "fruits", "carrot" → "veggies", "pea" → "veggies" }
+
+const entries = Object.entries(fruitObj);
+
+const invertedMap = new Map();
+
+for (const [k, v] of entries) {
+  for (const val of v) {
+    if (!invertedMap.has(val)) {
+      invertedMap.set(val, [k]);
+    } else {
+      invertedMap.get(val).push(k);
+    }
+  }
+}
+
+console.log(invertedMap);
