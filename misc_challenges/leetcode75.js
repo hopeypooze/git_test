@@ -920,3 +920,54 @@ function findDifference(nums1, nums2) {
 }
 
 console.log(findDifference(nums1, nums2));
+
+//Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.
+//add counts to Map, convcert Map values to array.  convery array to Set.  If they are the same length, values were unique.
+const arr = [-3, 0, -3, 1, 1, 1, -3, 10, 0];
+
+function uniqueOccurrences(arr) {
+  const myMap = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    myMap.has(arr[i])
+      ? myMap.set(arr[i], myMap.get(arr[i]) + 1)
+      : myMap.set(arr[i], 1);
+  }
+  const mapValues = [...myMap.values()];
+  const mapSet = new Set(mapValues);
+  const result = mapValues.length === mapSet.size ? true : false;
+  return result;
+}
+
+console.log(uniqueOccurrences(arr));
+
+//Two strings are considered close if you can attain one from the other using the following operations:
+
+// Operation 1: Swap any two existing characters.
+// For example, abcde -> aecdb
+// Operation 2: Transform every occurrence of one existing character into another existing character, and do the same with the other character.
+// For example, aacabb -> bbcbaa (all a's turn into b's, and all b's turn into a's)
+// You can use the operations on either string as many times as necessary.
+
+// Given two strings, word1 and word2, return true if word1 and word2 are close, and false otherwise.
+const word1 = "abc";
+const word2 = "bca";
+
+function closeStrings(str1, str2) {}
+//Given a 0-indexed n x n integer matrix grid, return the number of pairs (ri, cj) such that row ri and column cj are equal.
+
+//A row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).
+
+const grid = [
+  [3, 2, 1],
+  [1, 7, 6],
+  [2, 7, 7],
+];
+
+const myMap = new Map();
+grid.forEach((row, index) => {
+  myMap.set(`row${index}`, row);
+});
+console.log(myMap.get("row0").length);
+console.log(myMap.get("row0"));
+console.log(myMap.get("row1")[1]);
+console.log(myMap);
